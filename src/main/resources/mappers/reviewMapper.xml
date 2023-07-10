@@ -20,4 +20,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 			`id` = #{id}	
 	</select>
+
+	<insert id="insertReview" parameterType="map">
+		INSERT INTO
+			`new_review`
+			(`storeId`
+			, `menu`
+			, `userName`
+			, `point`
+			, `review`)
+		VALUE
+			(
+				#{storeId}
+				, #{menu}
+				, #{userName}
+				, #{point}
+				, #{review}
+			)	
+	</insert>
+	
+	<insert id="insertReviewObject" parameterType="com.tawny.spring.ex.mybatis.domain.Review">
+		INSERT INTO
+			`new_review`
+			(`storeId`
+			, `menu`
+			, `userName`
+			, `point`
+			, `review`)
+		VALUE
+			(
+			#{storeId}
+			, #{menu}
+			, #{userName}
+			, #{point}
+			, #{review}
+			)	
+	</insert>
 </mapper>
