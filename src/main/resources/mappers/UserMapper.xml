@@ -23,6 +23,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
+	<!-- 객체 형태(value 값에 birthday -> yyyymmdd -->
+	<insert id="insertUserByObject" parameterType="com.tawny.spring.ex.jsp.domain.User"
+	useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+			`new_user`
+		(
+			`name`
+			, `yyyymmdd`
+			, `email`
+			, `introduce`
+		)
+		VALUE
+		(
+			#{name}
+			, #{yyyymmdd}
+			, #{email}
+			, #{introduce}
+		)
+	</insert>
+	
+	
+	
 	<select id="selectLastUser" resultType="com.tawny.spring.ex.jsp.domain.User">
 		SELECT
 			`id`

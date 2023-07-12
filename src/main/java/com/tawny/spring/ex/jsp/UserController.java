@@ -22,22 +22,38 @@ public class UserController {
 	// 이름, 생년월일, 이메일, 자기소개 전달 받고 데이터 저장
 //	@RequestMapping(path="/jsp/user/add", method=RequestMethod.POST)
 	@PostMapping("/add")
-	@ResponseBody
 	public String creatUser(
 			@RequestParam("name") String name
 			, @RequestParam("birthday") String birthday
 			, @RequestParam("email") String email
-			, @RequestParam("introduce") String introduce) {
-		int count = userService.addUser(name, birthday, email, introduce);
-		return "입력성공 : " + count;
+			, @RequestParam("introduce") String introduce
+			, Model model) {
+//		int count = userService.addUser(name, birthday, email, introduce);
+		
+		
+		
+		User user = new User();
+		user.setName(name);
+		user.setYyyymmdd(birthday);
+		user.setEmail(email);
+		user.setIntroduce(introduce);
+		
+		int count = userService.addUserByObbject(user);
+		model.addAttribute("result", user);
+			
+		return "jsp/userInfo";
 	}
 
+	//input을 통해서만 위에 add에 접근 할 수 있음
 	// userInput 페이지 보여주기
 	@GetMapping("/input")
 	public String userInput() {
 		return "jsp/userInput";
 	}
 
+	
+	
+	
 	
 	// 가장 최근에 등록된 사용자 정보
 	@GetMapping("/lastuser")
@@ -48,8 +64,20 @@ public class UserController {
 		model.addAttribute("result", user);
 		
 		return "/jsp/userInfo";
-		
-		
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
