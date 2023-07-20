@@ -67,7 +67,7 @@ public class newUserController {
 	// 이메일을 전달 받고, 이미 가입된 이메일인지를 알려주는 API
 	@GetMapping("/email_confirm")
 	@ResponseBody
-	public int isDuplicateEmail(@RequestParam("email") String email) {
+	public Map<String, Boolean> isDuplicateEmail(@RequestParam("email") String email) {
 
 		// 중복됨 : {"isDuplicate":true}
 		// 중복되지 않음 : {"isDuplicate":false}
@@ -79,11 +79,11 @@ public class newUserController {
 			// 증복됨
 			resultMap.put("isDuplicate", true);
 
-		} else {
+		} else { // 중복 안 됨
 			resultMap.put("isDuplicate", false);
 		}
 
-	
+		return resultMap;
 	}
 	
 	
