@@ -34,4 +34,18 @@ public class NewUserService {
 	
 	
 	
+	
+	
+	// 전달된 email이 이미 있는지 확인하는 메소드
+	public boolean isDuplicateEmail(String email) {
+		int count = newUserRepository.selectCountEmail(email);
+			
+		if(count == 0) {
+			
+		}
+		
+		return ;
+	}
+	
+	
 }
