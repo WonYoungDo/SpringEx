@@ -11,32 +11,48 @@
 </head>
 <body>
 	
-	<h2>JSTL 함수 라이브러리</h2>
+	<h1>JSTL 포맷 라이브러리</h1>
 	
-	<c:set var="string1" value="No pain. No goin." />
+	<h3>숫자 출력</h3>
+	<c:set var="number" value="123456789" />
+	<h4><fmt:formatNumber value="${number }" /> </h4>
 	
-	<h3>문자열 길이</h3>
-	<h4>길이 : ${fn:length(string1) }</h4>
+	<h3>퍼센트</h3>
+	<h4><fmt:formatNumber value="0.43" type="percent" /> </h4>
+	<h4><fmt:formatNumber value="${2 / 6}" type="percent" /></h4>
 	
-	<h3>특정 문자열이 존재하는지 여부</h3>
-	<h4>NO가 존재하는지? ${fn:contains(string1, "No") }</h4>
-	<h4>gain.으로 끝나는지? ${fn:endsWith(string1, "goin.") }</h4>
+	<h3>통화</h3>
+	<h4><fmt:formatNumber value="${number }" type="currency" /> </h4>
+	<h4><fmt:formatNumber value="${number }" type="currency" currencySymbol="$" />  </h4>
 	
-	<c:set var="string2" value="I love chicken" />
-	<h3>문자열 치환</h3>
-	<h4>${fn:replace(string2, "chicken", "bread") }</h4>
+	<h3>소수점 표현</h3>
 	
-	<h3>문자열 자르기</h3>
-	<h4>${fn:substring(string2, 2, 6) }</h4>
+	<c:set var="pi" value="3.1415926435" />
 	
-	<h3>문자열 쪼개기</h3>
-	<h4>${fn:split(string2, " ")[2] }</h4>
+	<h4>${pi }</h4>
+	<h4><fmt:formatNumber value="${pi }" pattern="#.##" /> </h4>
+	<h4><fmt:formatNumber value="${pi }" pattern="0.000000000000000" /> </h4>
+	<h4><fmt:formatNumber value="${pi }" pattern="#.###############" /> </h4>	
 	
-	<h3>문자열 앞뒤 공백 제거</h3>
-	<c:set var="string3" value="		hello		" />
-	<h4>${string3}</h4>
-	<textarea>${string3}</textarea>
-	<textarea>${fn:trim(string3) }</textarea>
+	<fmt:formatNumber value="${pi }" pattern="#.##" var="pi2" />
+	
+	<h4>${pi2 }</h4>
+	
+	<hr>
+	
+	
+	<h3>날짜 포맷</h3>
+	
+	<h4>${now }</h4>
+	
+	<h4><fmt:formatDate value="${now }" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" /> </h4>
+	
+	<%-- 2023/07/14 20:53:12 --%>
+	<%-- 2023-07-14 8:53:12 --%>
+	
+	<%-- String -> Date --%>
+	<fmt:parseDate value="${dateString }" var="date" pattern="yyyy/MM/dd HH:mm:ss" />
+	<h4>${date }</h4>
 	
 </body>
 </html>

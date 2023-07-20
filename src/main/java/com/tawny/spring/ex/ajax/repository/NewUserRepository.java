@@ -13,8 +13,8 @@ public interface NewUserRepository {
 	public List<User> selectUserList();
 	
 	public int insertUser(
-			@Param("naem") String name
+			@Param("name") String name
 			, @Param("birthday") String birthday
-			, @Param("emaul") String email
+			, @Param("email") String email
 			, @Param("introduce") String introduce);
 }

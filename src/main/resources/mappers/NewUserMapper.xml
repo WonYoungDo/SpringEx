@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			`new_user`	
 		(	
 			`name`
-			, `birthday`
+			, `yyyymmdd`
 			, `email`
 			, `introduce`
 			

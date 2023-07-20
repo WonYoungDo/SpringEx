@@ -16,13 +16,13 @@ import com.tawny.spring.ex.ajax.service.NewUserService;
 import com.tawny.spring.ex.jsp.domain.User;
 
 @Controller
-@RequestMapping("/ajax")
+@RequestMapping("/ajax/user")
 public class newUserController {
 	
 	@Autowired
 	private NewUserService newUserService;
 	
-	@GetMapping("/user")
+	@GetMapping("/list")
 	public String userList(Model model) {
 		List<User> userList = newUserService.getUserList();
 		
@@ -32,12 +32,12 @@ public class newUserController {
 	
 	
 	
-	@GetMapping("/test")
+	@GetMapping("/add")
 	@ResponseBody
 	public Map<String, String> createUser(
-			@RequestParam("naem") String name
+			@RequestParam("name") String name
 			, @RequestParam("birthday") String birthday
-			, @RequestParam("emaul") String email
+			, @RequestParam("email") String email
 			, @RequestParam("introduce") String introduce) {
 		
 		int count = newUserService.addUser(name, birthday, email, introduce);
