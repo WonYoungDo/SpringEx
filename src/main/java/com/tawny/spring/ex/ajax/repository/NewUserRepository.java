@@ -17,4 +17,19 @@ public interface NewUserRepository {
 			, @Param("birthday") String birthday
 			, @Param("email") String email
 			, @Param("introduce") String introduce);
+
+
+
+
+
+	// 전달된 email이 몇개인지 조회
+	public int selectCountEmail(@Param("email") String email);
+
+
+
+
+
+
+
+
 }
